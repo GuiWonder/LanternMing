@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install fontforge
+      run: sudo apt update && sudo apt install python3-fontforge
+    - name: Get fonts
+      run: |
+        wget -P ./codes https://glyphwiki.org/font/gw1796612.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw1796547.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw3479103.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw3479104.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw3664726.ttf
+    - name: Build A
+      run: python3 ./codes/build.py ./LanternMingA.ttf A ./codes/gw1796612.ttf ./codes/gw3664726.ttf ./codes/gw3479103.ttf
+    - name: Build B
+      run: python3 ./codes/build.py ./LanternMingB.ttf B ./codes/gw1796547.ttf ./codes/gw3664726.ttf ./codes/gw3479104.ttf
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Fonts
+        path: "*.ttf"
+
+    #- name: Upload to release
+    #  uses: ncipollo/release-action@v1
+    #  with:
+    #    token: "${{ secrets.GITHUB_TOKEN }}"
+    #    tag: "test-001"
+    #    artifacts: "*.ttf"
+    #    allowUpdates: true
+    #    prerelease: true
+    #    draft: true
+    #    name: "Build Test"
+    #    body: "LanternMing TTF"
