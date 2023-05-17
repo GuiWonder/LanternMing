@@ -120,7 +120,7 @@ def setnm(font, A):
 	tcnm='上元明朝'+A
 	scnm='上元明朝'+A
 	jpnm='上元明朝'+A
-	versn='1.00'
+	versn='1.01'
 	fontVURL='https://github.com/GuiWonder/LanternMing'
 	wt='Regular'
 
@@ -210,6 +210,9 @@ def build(outft, A, fonts):
 	print('Merging glyphs...')
 	mergeft(font, fonts[2], True)
 	print('Checking glyphs...')
+	if A=='B':
+		print('Merging glyphs...')
+		mergeft(font, fonts[3], False)
 	rmglA(font, A)
 	if A=='A':
 		print('Checking lookups...')

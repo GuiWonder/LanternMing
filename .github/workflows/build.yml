@@ -17,10 +17,11 @@ jobs:
         wget -P ./codes https://glyphwiki.org/font/gw3479103.ttf
         wget -P ./codes https://glyphwiki.org/font/gw3479104.ttf
         wget -P ./codes https://glyphwiki.org/font/gw3664726.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw3849763.ttf
     - name: Build A
       run: python3 ./codes/build.py ./LanternMingA.ttf A ./codes/gw1796612.ttf ./codes/gw3664726.ttf ./codes/gw3479103.ttf
     - name: Build B
-      run: python3 ./codes/build.py ./LanternMingB.ttf B ./codes/gw1796547.ttf ./codes/gw3664726.ttf ./codes/gw3479104.ttf
+      run: python3 ./codes/build.py ./LanternMingB.ttf B ./codes/gw1796547.ttf ./codes/gw3664726.ttf ./codes/gw3479104.ttf ./codes/gw3849763.ttf
 
     - uses: actions/upload-artifact@v3
       with:
