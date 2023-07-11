@@ -120,7 +120,7 @@ def setnm(font, A):
 	tcnm='上元明朝'+A
 	scnm='上元明朝'+A
 	jpnm='上元明朝'+A
-	versn='1.01'
+	versn='1.02'
 	fontVURL='https://github.com/GuiWonder/LanternMing'
 	wt='Regular'
 
