@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Install fontforge
       run: sudo apt update && sudo apt install python3-fontforge
     - name: Get fonts
@@ -17,15 +17,16 @@ jobs:
         wget -P ./codes https://glyphwiki.org/font/gw3479103.ttf
         wget -P ./codes https://glyphwiki.org/font/gw3479104.ttf
         wget -P ./codes https://glyphwiki.org/font/gw3664726.ttf
-        wget -P ./codes https://glyphwiki.org/font/gw3975924.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw4079303.ttf
+        wget -P ./codes https://glyphwiki.org/font/gw6267281.ttf
     - name: Build A
-      run: python3 ./codes/build.py ./LanternMingA.ttf A ./codes/gw1796612.ttf ./codes/gw3664726.ttf ./codes/gw3479103.ttf
+      run: python3 ./codes/build.py ./LanternMingA.ttf A ./codes/gw1796612.ttf ./codes/gw3664726.ttf ./codes/gw3479103.ttf ./codes/gw4079303.ttf ./codes/gw6267281.ttf
     - name: Build B
-      run: python3 ./codes/build.py ./LanternMingB.ttf B ./codes/gw1796547.ttf ./codes/gw3664726.ttf ./codes/gw3479104.ttf ./codes/gw3975924.ttf
+      run: python3 ./codes/build.py ./LanternMingB.ttf B ./codes/gw1796547.ttf ./codes/gw3664726.ttf ./codes/gw3479104.ttf ./codes/gw4079303.ttf ./codes/gw6267281.ttf
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: Fonts
+        name: LanternMing
         path: "*.ttf"
 
     #- name: Upload to release
